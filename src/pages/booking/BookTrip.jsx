@@ -4,7 +4,6 @@ import NavBar from '../homepage/NavBar';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 
-
 const BookTrip = () => {
   const [step, setStep] = useState(1);
   const [selectedTripDetails, setSelectedTripDetails] = useState(null);
@@ -127,12 +126,18 @@ const BookTrip = () => {
     { id: 3, icon: Utensils, title: "Culinary Experiences", price: "₹6,999", description: "Local cooking classes and food tours" },
   ];
 
+  // Gradient colors for the animated blobs
+  const blobColors = [
+    'radial-gradient(circle, rgba(167,255,235,0.3) 0%, rgba(0,212,255,0) 70%)',
+    'radial-gradient(circle, rgba(255,203,167,0.3) 0%, rgba(255,107,0,0) 70%)',
+    'radial-gradient(circle, rgba(211,167,255,0.3) 0%, rgba(170,0,255,0) 70%)'
+  ];
+
   const TripDetailsModal = ({ trip, onClose }) => {
     if (!trip) return null;
 
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-2 sm:p-4">
-        
         <div className="bg-white rounded-lg w-full max-w-3xl max-h-[90vh] overflow-y-auto">
           <div className="p-4 sm:p-6">
             <div className="flex justify-between items-start mb-4">
@@ -266,7 +271,7 @@ const BookTrip = () => {
     </div>
   );
 
- const renderStep1 = () => (
+   const renderStep1 = () => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -458,38 +463,110 @@ const BookTrip = () => {
       </div>
     </div>
   );
-  
 
   return (
-    <div className="min-h-screen bg-gray-50 overflow-hidden">
-        <NavBar />
-      <div className="max-w-4xl mx-auto py-9 px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-12">
-        <motion.h2
-          className="text-4xl font-bold text-gray-900 mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          Book Your Adventure
-        </motion.h2>
-        <motion.div
-          className="w-24 h-1 bg-[#27C3C5] mx-auto mb-8"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        ></motion.div>
-        <motion.p
-          className="text-gray-600"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-        >
-          Let us help you plan your perfect getaway.
-        </motion.p>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-cyan-50 to-emerald-50 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+        {/* Floating gradient blobs */}
+        {[0, 1, 2].map((i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full w-[300px] h-[300px] pointer-events-none"
+            style={{
+              background: blobColors[i],
+              top: `${20 + i * 20}%`,
+              left: `${i * 30}%`
+            }}
+            animate={{
+              x: [0, i % 2 === 0 ? 100 : -100, 0],
+              y: [0, i % 2 === 0 ? 50 : -50, 0],
+              rotate: [0, 360]
+            }}
+            transition={{
+              duration: 30 + i * 10,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+
+        {/* Floating particles */}
+        {Array.from({ length: 30 }).map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className="absolute rounded-full bg-cyan-200/30 pointer-events-none"
+            style={{
+              width: `${Math.random() * 10 + 2}px`,
+              height: `${Math.random() * 10 + 2}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`
+            }}
+            animate={{
+              y: [0, (Math.random() - 0.5) * 100],
+              x: [0, (Math.random() - 0.5) * 100],
+              opacity: [0.3, 0.8, 0.3]
+            }}
+            transition={{
+              duration: Math.random() * 20 + 10,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+
+        {/* Animated grid pattern */}
+        <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
       </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
+      <NavBar />
+
+      <div className="relative max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8 z-10">
+        {/* Hero section */}
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-emerald-600"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Book Your Adventure
+          </motion.h2>
+          <motion.div 
+            className="w-32 h-1.5 bg-gradient-to-r from-cyan-400 to-emerald-400 mx-auto rounded-full"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "backOut" }}
+          />
+          <motion.p
+            className="mt-8 text-xl text-gray-600 max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            Let us help you plan your perfect getaway.
+          </motion.p>
+        </motion.div>
+
+        <div className="backdrop-blur-sm bg-white/40 rounded-2xl shadow-xl p-8 border border-white/20">
           {step < 4 && renderProgressBar()}
           
           <form onSubmit={handleSubmit}>
@@ -501,24 +578,28 @@ const BookTrip = () => {
             {step < 4 && (
               <div className="flex justify-between mt-8">
                 {step > 1 && (
-                  <button
+                  <motion.button
                     type="button"
                     onClick={() => setStep(step - 1)}
                     className="flex items-center px-6 py-2 text-gray-600 hover:text-gray-900"
+                    whileHover={{ x: -2 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Back
-                  </button>
+                  </motion.button>
                 )}
-                <button
+                <motion.button
                   type="button"
                   onClick={() => step === 3 ? handleSubmit(new Event('submit')) : setStep(step + 1)}
                   disabled={!isStepValid() || (step === 3 && isSubmitting)}
-                  className={`ml-auto flex items-center px-6 py-3 rounded-lg font-semibold ${
+                  className={`ml-auto flex items-center px-6 py-3 rounded-full font-semibold shadow-lg ${
                     isStepValid() && !isSubmitting
-                      ? 'bg-[#27C3C5] text-white hover:bg-[#1fa9ab]'
+                      ? 'bg-gradient-to-r from-cyan-500 to-emerald-500 text-white hover:shadow-xl'
                       : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   }`}
+                  whileHover={isStepValid() && !isSubmitting ? { scale: 1.02 } : {}}
+                  whileTap={isStepValid() && !isSubmitting ? { scale: 0.98 } : {}}
                 >
                   {step === 3 ? (
                     <>
@@ -543,7 +624,7 @@ const BookTrip = () => {
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </>
                   )}
-                </button>
+                </motion.button>
               </div>
             )}
           </form>

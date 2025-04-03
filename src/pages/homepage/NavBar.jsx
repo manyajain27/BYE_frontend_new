@@ -124,12 +124,12 @@ export default function NavBar() {
                 >
                   FAQs
                 </Link>
-                <Link
+                {/* <Link
                   to="/blog"
                   className="nav-links text-gray-300 transition-colors px-3 py-2"
                 >
                   Blog
-                </Link>
+                </Link> */}
                 <Link
                   to="/contact"
                   className="nav-links text-gray-300 transition-colors px-3 py-2"

@@ -100,14 +100,14 @@ const MobileMenu = ({ isOpen, onClose }) => {
                 <span className="text-lg">FAQs</span>
                 <ArrowRight className="h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
-              <Link
+              {/* <Link
                 to="/blog"
                 className="flex items-center justify-between p-4 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-colors group"
                 onClick={onClose}
               >
                 <span className="text-lg">Blog</span>
                 <ArrowRight className="h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </Link>
+              </Link> */}
               <Link
                 to="/contact"
                 className="flex items-center justify-between p-4 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-colors group"

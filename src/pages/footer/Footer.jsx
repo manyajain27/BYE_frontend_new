@@ -73,6 +73,49 @@ const Footer = () => {
     }
   };
 
+  // Social media links data
+  const socialLinks = [
+    {
+      icon: Facebook,
+      url: "/",
+      target: "_blank"
+    },
+    {
+      icon: Instagram,
+      url: "https://www.instagram.com/brewyourexperiences/",
+      target: "_blank"
+    },
+    {
+      icon: Twitter,
+      url: "/",
+      target: "_blank"
+    }
+  ];
+
+  // Quick links data
+  const quickLinks = [
+    {
+      name: "Home",
+      url: "/"
+    },
+    {
+      name: "Upcoming Trips",
+      url: "/trips/upcoming"
+    },
+    {
+      name: "About Us",
+      url: "/about"
+    },
+    {
+      name: "Blog",
+      url: "/blog"
+    },
+    {
+      name: "Contact",
+      url: "/contact"
+    }
+  ];
+
   const handleSubscribe = async (e) => {
     e.preventDefault();
     setStatus('loading');
@@ -124,16 +167,16 @@ const Footer = () => {
               <span className="text-xs">YOUR EXPERIENCES</span>
             </div>
             <div className="flex justify-center space-x-6">
-              {[Facebook, Instagram, Twitter].map((Icon, index) => (
+              {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
-                  href={index === 1 ? "https://www.instagram.com/brewyourexperiences/" : "#"}
-                  target={index === 1 ? '_blank' : '_self'}
+                  href={social.url}
+                  target={social.target}
                   className="hover:text-[#27C3C5] transition-colors"
                   whileHover="hover"
                   variants={iconHover}
                 >
-                  <Icon className="h-5 w-5" />
+                  <social.icon className="h-5 w-5" />
                 </motion.a>
               ))}
             </div>
@@ -182,16 +225,16 @@ const Footer = () => {
               Crafting unforgettable travel experiences that blend luxury, adventure, and authentic local culture.
             </p>
             <div className="flex space-x-4">
-              {[Facebook, Instagram, Twitter].map((Icon, index) => (
+              {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
-                  href={index === 1 ? "https://www.instagram.com/brewyourexperiences/" : "#" } 
-                  target={index === 1 ? '_blank' : '_self'}
+                  href={social.url}
+                  target={social.target}
                   className="hover:text-[#27C3C5] transition-colors"
                   whileHover="hover"
                   variants={iconHover}
                 >
-                  <Icon className="h-5 w-5" />
+                  <social.icon className="h-5 w-5" />
                 </motion.a>
               ))}
             </div>
@@ -200,14 +243,14 @@ const Footer = () => {
           <motion.div variants={fadeIn}>
             <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {["Home", "Upcoming Trips", "About Us", "Blog", "Contact"].map((link, index) => (
+              {quickLinks.map((link, index) => (
                 <motion.li 
                   key={index}
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <a href={`#${link.toLowerCase().replace(" ", "-")}`} className="hover:text-[#27C3C5] transition-colors">
-                    {link}
+                  <a href={link.url} className="hover:text-[#27C3C5] transition-colors">
+                    {link.name}
                   </a>
                 </motion.li>
               ))}
@@ -258,14 +301,14 @@ const Footer = () => {
             <div className="flex space-x-4 md:space-x-6">
               <motion.a 
                 whileHover={{ x: 2 }}
-                href="#" 
+                href="/privacy" 
                 className="hover:text-[#27C3C5] transition-colors"
               >
                 Privacy
               </motion.a>
               <motion.a 
                 whileHover={{ x: 2 }}
-                href="#" 
+                href="/terms" 
                 className="hover:text-[#27C3C5] transition-colors"
               >
                 Terms

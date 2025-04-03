@@ -11,8 +11,8 @@ function MainHomepage() {
   return (
     <div>
       <HomeSection />
-      <About showNavbar={false} />
-      <UpcomingTrips showNavbar={false} />
+      <About showNavbar={false} showContact={false} />
+      <UpcomingTrips showNavbar={false} showContact={false} />
       <ContactUs showNavbar={false} />
       <Footer />
     </div>
