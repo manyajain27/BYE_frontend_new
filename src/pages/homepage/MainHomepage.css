@@ -1,0 +1,220 @@
+.nav-links:hover {
+    color: #27C3C5;
+    text-decoration: none;
+    
+}
+.nav-links{
+    font-family:'Lato'
+}
+.book-now:hover ,.explore-trips-button:hover{
+    transform: scale(1.05);
+}
+.book-now,.explore-trips-button{
+    background-color: #27C3C5;
+    transition: all 0.2s ease-in-out;
+}
+/* .nav-bar{
+    position: relative;
+    margin-top: 10px;
+} */
+.nav-bar-full{
+    background-color:rgba(0,0,0,0.3);
+}
+.container1{
+    padding:30px;
+}
+*{
+    font-family: 'Lato', sans-serif;
+}
+.scroll{
+    bottom:20px;
+    margin: 0;
+    position: absolute;
+     left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+   
+}
+.down-arrow{
+    animation: blink 3s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+.book-now-button,
+.explore-trips-button{
+    width:186px;
+}
+@media screen and (max-width: 480px) {
+    .button-group{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+    }
+
+}
+/* @media screen and (max-height: 840px){
+    .scroll{
+        display: none;
+    }
+} */
+
+/* Additional Mobile Responsive Styles */
+
+/* General responsive text adjustments */
+@media screen and (max-width: 768px) {
+    h1, h2 {
+      font-size: 2.5rem !important;
+    }
+    
+    h3 {
+      font-size: 1.75rem !important;
+    }
+    
+  }
+  
+  /* About section responsive */
+  @media screen and (max-width: 640px) {
+    .about-grid {
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+    }
+    
+    .image-grid {
+      display: none;
+    }
+  }
+  
+  /* Contact form responsive */
+  @media screen and (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr !important;
+    }
+    
+    .contact-info {
+      order: -1;
+    }
+  }
+  
+  /* Upcoming trips responsive */
+  @media screen and (max-width: 768px) {
+    .trips-grid {
+      grid-template-columns: 1fr !important;
+      padding: 1rem;
+    }
+    
+    .trip-card {
+      max-width: 100% !important;
+    }
+  }
+  
+  /* Footer responsive */
+  @media screen and (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr !important;
+      text-align: center;
+    }
+    
+    .social-links {
+      justify-content: center;
+    }
+    
+    .footer-links {
+      margin-top: 2rem;
+    }
+  }
+  
+  /* Navbar brand responsive */
+  @media screen and (max-width: 480px) {
+    .brew {
+      font-size: 2.5rem !important;
+    }
+    
+    .title span:last-child {
+      font-size: 0.875rem !important;
+    }
+  }
+  
+  /* FAQs responsive */
+  @media screen and (max-width: 640px) {
+    .faq-container {
+      padding: 1rem;
+    }
+    
+    .faq-question {
+      font-size: 1rem !important;
+    }
+  }
+  
+  @media screen and (max-height: 768px){
+    .scroll{
+        display: none;
+    }
+  }
+
+  /* Homepage content responsive */
+  @media screen and (max-width: 640px) {
+    
+    
+    .type-animation {
+      font-size: 2rem !important;
+    }
+  }
+  
+  /* General spacing adjustments for mobile */
+  @media screen and (max-width: 640px) {
+    .py-24 {
+      padding-top: 4rem !important;
+      padding-bottom: 4rem !important;
+    }
+    
+    .px-8 {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    
+    .gap-16 {
+      gap: 2rem !important;
+    }
+  }
+  .scroll-text {
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Adjust animation for better visibility */
+.down-arrow {
+    animation: bounce 2s infinite;
+}
+
+/* New bounce animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 0.7;
+    }
+}
+
+ @media screen and (max-height: 700px) {
+   .container1{
+       padding-top: 0px;
+       margin-top: 0px;
+   } 
+}
+
